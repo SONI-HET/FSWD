@@ -1,0 +1,17 @@
+function findSalary(salaries) {
+    var minSalary = Math.min(...salaries);
+    var maxSalary = Math.max(...salaries);
+    return {
+      min: minSalary,
+      max: maxSalary
+    };
+  }
+  var salaries = [15000, 30000, 22000, 14000, 43000];
+  var result = findSalary(salaries);
+  var array=document.getElementById("demo");
+  array.innerHTML="Salary:"+ salaries +"<br>";
+  var output=document.getElementById("salaryId");
+  output.innerHTML="Maximum salary:"+ result.max+"<br>";
+  output.innerHTML+="Minimum salary:"+ result.min+"<br>";
+  console.log("Minimum salary:", result.min);
+  console.log("Maximum salary:", result.max);
