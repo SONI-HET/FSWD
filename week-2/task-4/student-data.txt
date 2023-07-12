@@ -1,0 +1,4 @@
+MADHAV, 7.5
+AMAN, 9.1
+MAHI, 8
+MALAV, 7
