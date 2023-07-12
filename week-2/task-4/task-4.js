@@ -12,5 +12,5 @@ const filteredStudents = students.filter(student => {
 });
 console.log('students name contains \'MA\' and having cgpa > 7 are... ');
 for (const i of filteredStudents) {
-    console.log(i.name, i.cgpa);
+    console.log(i.name,"->", i.cgpa);
 }
