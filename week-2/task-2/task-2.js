@@ -1,43 +1,55 @@
-const http = require("http");
-const qs = require("querystring");
-
+const http =require('http')
 const server = http.createServer((req, res) => {
-  if (req.method === "GET") {
-    res.end("welcome to server");
+  // GET request handler
+  if (req.method === 'GET') {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Hello, GET request!');
+  }
+  // POST request handler
+  else if (req.method === 'POST') {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Hello, POST request!');
+  }
+  // PUT request handler
+  else if (req.method === 'PUT') {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Hello, PUT request!');
+  }
+  // DELETE request handler
+  else if (req.method === 'DELETE') {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Hello, DELETE request!');
   }
 
-  if (req.method === "POST") {
-    let body = "";
+ else if (req.method === 'PATCH') {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Hello, PATCH request!');
+  }
+  // HEAD request handler
+  else if (req.method === 'HEAD') {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Hello, HEAD request!');
+  }
 
-    req.on("data", (chunk) => {
-      body += chunk.toString();
-    });
+  // OPTIONS request handler
+  else if (req.method === 'OPTIONS') {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Hello, OPTIONS request!');
+  }
 
-    req.on("end", () => {
-      const formData = qs.parse(body);
-      const number1 = Number(formData.number1);
-      const number2 = Number(formData.number2);
+  // PROPFIND request handler
+  else if (req.method === 'PROPFIND') {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Hello, PROPFIND request!');
+  }
 
-      if (isNaN(number1) || isNaN(number2)) {
-        res.statusCode = 400;
-        res.setHeader("Content-Type", "text/plain");
-        res.end("Invalid number1 or number2 parameter");
-        return;
-      }
-
-      const sum = number1 + number2;
-
-      res.statusCode = 200;
-      res.setHeader("Content-Type", "text/plain");
-      res.end(`Sum: ${sum}`);
-    });
-  } else {
-    res.statusCode = 404;
-    res.setHeader("Content-Type", "text/plain");
-    res.end("Endpoint not found");
+  // Invalid request method
+  else {
+    res.writeHead(400, { 'Content-Type': 'text/plain' });
+    res.end('Invalid request method');
   }
 });
 
 server.listen(3000, () => {
-  console.log("Server listening on port 3000");
+  console.log('Server is running on port 3000');
 });
